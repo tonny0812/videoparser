@@ -1,11 +1,11 @@
-package com.rjt.video.service.impl;
+package com.keepgulp.video.service.impl;
 
 import org.springframework.stereotype.Service;
 
-import com.rjt.common.util.JsonUtil;
-import com.rjt.common.util.TextUtil;
-import com.rjt.video.model.VideoModel;
-import com.rjt.video.service.VideoService;
+import com.keepgulp.common.util.JsonUtil;
+import com.keepgulp.common.util.TextUtil;
+import com.keepgulp.video.model.VideoModel;
+import com.keepgulp.video.service.VideoService;
 
 import okhttp3.OkHttpClient;
 import okhttp3.Request;

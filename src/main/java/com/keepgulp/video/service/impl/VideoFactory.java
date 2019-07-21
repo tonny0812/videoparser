@@ -1,6 +1,6 @@
-package com.rjt.video.service.impl;
+package com.keepgulp.video.service.impl;
 
-import com.rjt.video.service.VideoService;
+import com.keepgulp.video.service.VideoService;
 
 public class VideoFactory {
 	public static VideoService getVideo(String type)

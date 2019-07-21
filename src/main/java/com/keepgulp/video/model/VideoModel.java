@@ -1,4 +1,4 @@
-package com.rjt.video.model;
+package com.keepgulp.video.model;
 
 public class VideoModel {
 	//视频名

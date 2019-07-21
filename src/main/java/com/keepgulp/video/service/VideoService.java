@@ -1,6 +1,6 @@
-package com.rjt.video.service;
+package com.keepgulp.video.service;
 
-import com.rjt.video.model.VideoModel;
+import com.keepgulp.video.model.VideoModel;
 
 /**  
 * @comment
@@ -9,5 +9,5 @@ import com.rjt.video.model.VideoModel;
 * @version 1.0  
 */
 public interface VideoService {
-	public VideoModel parseUrl(String url);
+	VideoModel parseUrl(String url);
 }

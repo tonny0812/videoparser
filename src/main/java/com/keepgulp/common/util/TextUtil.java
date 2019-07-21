@@ -1,4 +1,4 @@
-package com.rjt.common.util;
+package com.keepgulp.common.util;
 
 import blade.kit.http.HttpRequest;
 import com.alibaba.fastjson.JSON;
