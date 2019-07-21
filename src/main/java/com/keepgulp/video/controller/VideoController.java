@@ -5,7 +5,7 @@ import java.util.Objects;
 import org.springframework.web.bind.annotation.*;
 
 import com.keepgulp.video.model.VideoModel;
-import com.keepgulp.video.service.VideoService;
+import com.keepgulp.video.service.VideoParseService;
 import com.keepgulp.video.service.impl.VideoFactory;
 
 /**  
@@ -20,10 +20,10 @@ import com.keepgulp.video.service.impl.VideoFactory;
 public class VideoController {
 	@GetMapping("parse")
 	public VideoModel parse(@RequestParam(value = "url") String url) throws InstantiationException, IllegalAccessException, ClassNotFoundException {
-		 VideoService videoService = VideoFactory.getVideo(url);
-		 if(Objects.isNull(videoService)) {
+		 VideoParseService videoParseService = VideoFactory.getVideo(url);
+		 if(Objects.isNull(videoParseService)) {
 			 return new VideoModel();
 		 }
-		 return videoService.parseUrl(url);
+		 return videoParseService.parseUrl(url);
 	}
 }

@@ -7,7 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.keepgulp.common.util.JsonUtil;
 import com.keepgulp.video.model.VideoModel;
-import com.keepgulp.video.service.VideoService;
+import com.keepgulp.video.service.VideoParseService;
 
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
@@ -20,7 +20,7 @@ import okhttp3.Response;
 * @version 1.0  
 */
 @Service
-public class PiPiXServiceImpl implements VideoService{
+public class PiPiXParseServiceImpl implements VideoParseService {
 
 	@Override
 	public VideoModel parseUrl(String url) {
@@ -47,6 +47,6 @@ public class PiPiXServiceImpl implements VideoService{
 		return videoModel;
 	}
 	public static void main(String[] args) {
-		System.out.println(new PiPiXServiceImpl().parseUrl("https://h5.pipix.com/item/6677539389557446916"));
+		System.out.println(new PiPiXParseServiceImpl().parseUrl("https://h5.pipix.com/item/6677539389557446916"));
 	}
 }

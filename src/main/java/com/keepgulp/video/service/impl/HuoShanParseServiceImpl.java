@@ -5,7 +5,7 @@ import org.springframework.stereotype.Service;
 import com.keepgulp.common.util.JsonUtil;
 import com.keepgulp.common.util.TextUtil;
 import com.keepgulp.video.model.VideoModel;
-import com.keepgulp.video.service.VideoService;
+import com.keepgulp.video.service.VideoParseService;
 
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
@@ -18,7 +18,7 @@ import okhttp3.Response;
 * @version 1.0  
 */
 @Service
-public class KuaiShouServiceImpl implements VideoService {
+public class HuoShanParseServiceImpl implements VideoParseService {
 
 	@Override
 	public VideoModel parseUrl(String url) {
@@ -32,16 +32,11 @@ public class KuaiShouServiceImpl implements VideoService {
 			Request request = new Request.Builder().url(url).build();
 			Response response = okHttpClient.newCall(request).execute();
 			String result=response.body().string();
-			String photoId=TextUtil.getSubString(result, "\\\"photoId\\\":\\\"", "\\\"");
-			System.out.println(photoId);
-			url="https://api.kmovie.gifshow.com/rest/n/kmovie/app/photo/getPhotoById?WS&jjh_yqc&ws&photoId="+photoId;
-			request=new Request.Builder().url(url).build();
-			response=okHttpClient.newCall(request).execute();
-			result=response.body().string();
-			 System.out.println(result);
-			 videoModel.setName(JsonUtil.getJsonValue(result, "photo.caption"));
-			 videoModel.setPlayAddr(JsonUtil.getJsonValue(result, "photo.mainUrl"));
-			 videoModel.setCover(JsonUtil.getJsonValue(result, "photo.coverUrl"));
+			System.out.println(result);
+			result=TextUtil.getSubString(result, "create({d:", "});");
+			String videoId=JsonUtil.getJsonValue(result, "video.uri");
+			videoModel.setPlayAddr("http://hotsoon.snssdk.com/hotsoon/item/video/_playback/?video_id="+videoId);
+			videoModel.setCover(JsonUtil.getJsonValue(result, "video.cover.url_list[0]"));
 		} catch (Exception e) {
 			// TODO: handle exception
 			e.printStackTrace();
@@ -50,6 +45,6 @@ public class KuaiShouServiceImpl implements VideoService {
 	}
 	
 	public static void main(String[] args) {
-		System.out.println(new KuaiShouServiceImpl().parseUrl("http://m.chenzhongtech.com/s/mhn5haAq/"));
+		System.out.println(new HuoShanParseServiceImpl().parseUrl("https://reflow.huoshan.com/hotsoon/s/th01P3Eu700/"));
 	}
 }

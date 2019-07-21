@@ -5,7 +5,7 @@ import org.springframework.stereotype.Service;
 import com.keepgulp.common.util.JsonUtil;
 import com.keepgulp.common.util.TextUtil;
 import com.keepgulp.video.model.VideoModel;
-import com.keepgulp.video.service.VideoService;
+import com.keepgulp.video.service.VideoParseService;
 
 import blade.kit.http.HttpRequest;
 
@@ -16,12 +16,12 @@ import blade.kit.http.HttpRequest;
 * @version 1.0  
 */
 @Service
-public class DouyinServiceImpl implements VideoService{
+public class DouyinParseServiceImpl implements VideoParseService {
 
 	@Override
 	public VideoModel parseUrl(String url) {
 		// TODO Auto-generated method stub
-		VideoModel videoModel=new VideoModel();
+		VideoModel videoModel = new VideoModel();
 		HttpRequest request = HttpRequest.get(url);
 		String res = request.body();
 		String awemeId = TextUtil.getSubString(res, "https://www.iesdouyin.com/share/video/", "/?");
@@ -39,6 +39,6 @@ public class DouyinServiceImpl implements VideoService{
 		return videoModel;
 	}
 	public static void main(String[] args) {
-		System.out.println(new DouyinServiceImpl().parseUrl("http://v.douyin.com/r2w3sN/"));
+		System.out.println(new DouyinParseServiceImpl().parseUrl("http://v.douyin.com/r2w3sN/"));
 	}
 }

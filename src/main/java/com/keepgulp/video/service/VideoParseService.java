@@ -8,6 +8,8 @@ import com.keepgulp.video.model.VideoModel;
 * @date 2019年6月14日  
 * @version 1.0  
 */
-public interface VideoService {
+public interface VideoParseService {
 	VideoModel parseUrl(String url);
+
+
 }

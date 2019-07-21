@@ -7,7 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.keepgulp.common.util.JsonUtil;
 import com.keepgulp.video.model.VideoModel;
-import com.keepgulp.video.service.VideoService;
+import com.keepgulp.video.service.VideoParseService;
 
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
@@ -20,7 +20,7 @@ import okhttp3.Response;
 * @version 1.0  
 */
 @Service
-public class WeiShiServiceImpl implements VideoService {
+public class WeiShiParseServiceImpl implements VideoParseService {
 
 	@Override
 	public VideoModel parseUrl(String url) {
@@ -47,7 +47,7 @@ public class WeiShiServiceImpl implements VideoService {
 		return videoModel;
 	}
 	public static void main(String[] args) {
-		System.out.println(new WeiShiServiceImpl().parseUrl("https://h5.weishi.qq.com/weishi/feed/70hxLzG4U1HlJhtUj/wsfeed?_proxy=1&_wv=1&wxplay=1&id=70hxLzG4U1HlJhtUj&spid=h5&reqseq=311149196&cover=http%3A%2F%2Fpic640.weishi.qq.com%2Fab4595845793449cb17a6df26bb6cover.jpg&bgSize=cover&image=4595845793449cb17a6df26bb6cover.&chid=100000001&pkg=3670&attach=cp_reserves3_4001&qua=v1_ht5_qz_3.0.0_001_idc_new&xflag=2130706433a1685170850b1560498191"));
+		System.out.println(new WeiShiParseServiceImpl().parseUrl("https://h5.weishi.qq.com/weishi/feed/70hxLzG4U1HlJhtUj/wsfeed?_proxy=1&_wv=1&wxplay=1&id=70hxLzG4U1HlJhtUj&spid=h5&reqseq=311149196&cover=http%3A%2F%2Fpic640.weishi.qq.com%2Fab4595845793449cb17a6df26bb6cover.jpg&bgSize=cover&image=4595845793449cb17a6df26bb6cover.&chid=100000001&pkg=3670&attach=cp_reserves3_4001&qua=v1_ht5_qz_3.0.0_001_idc_new&xflag=2130706433a1685170850b1560498191"));
 	}
 
 }

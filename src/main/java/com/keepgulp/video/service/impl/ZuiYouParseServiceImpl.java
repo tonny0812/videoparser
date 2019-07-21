@@ -7,7 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.keepgulp.common.util.JsonUtil;
 import com.keepgulp.video.model.VideoModel;
-import com.keepgulp.video.service.VideoService;
+import com.keepgulp.video.service.VideoParseService;
 
 import okhttp3.MediaType;
 import okhttp3.OkHttpClient;
@@ -22,7 +22,7 @@ import okhttp3.Response;
 * @version 1.0  
 */
 @Service
-public class ZuiYouServiceImpl implements VideoService {
+public class ZuiYouParseServiceImpl implements VideoParseService {
 
 	@Override
 	public VideoModel parseUrl(String url) {
@@ -55,6 +55,6 @@ public class ZuiYouServiceImpl implements VideoService {
 	}
 	
 	public static void main(String[] args) {
-		System.out.println(new ZuiYouServiceImpl().parseUrl("https://h5.izuiyou.com/detail/122595613?zy_to=applink&to=applink"));
+		System.out.println(new ZuiYouParseServiceImpl().parseUrl("https://h5.izuiyou.com/detail/122595613?zy_to=applink&to=applink"));
 	}
 }

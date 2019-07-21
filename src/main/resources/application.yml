@@ -1,4 +1,12 @@
 server:
   port: 6666
-  servlet:
-    context-path: /  
+
+spring:
+  jpa:
+    database: MYSQL
+    hibernate:
+      ddl-auto: update
+  datasource:
+    url: jdbc:mysql://127.0.0.1:3306/video?useUnicode=true&characterEncoding=utf8&autoReconnect=true&useSSL=true
+    username: root
+    password: root
