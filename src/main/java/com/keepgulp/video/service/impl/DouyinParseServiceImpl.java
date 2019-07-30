@@ -38,7 +38,24 @@ public class DouyinParseServiceImpl implements VideoParseService {
 	    videoModel.setCover(cover);
 		return videoModel;
 	}
+
+	public VideoModel parseUrl2(String awemeId) {
+		VideoModel videoModel = new VideoModel();
+		String url ="https://api-hl.amemv.com/aweme/v1/aweme/detail/?aid=1128&app_name=aweme&version_code=251&aweme_id="+awemeId;
+		HttpRequest request = HttpRequest.get(url).header("User-Agent","Mozilla/5.0 (iPhone; CPU iPhone OS 11_0 like Mac OS X) AppleWebKit/604.1.38 (KHTML, like Gecko) Version/11.0 Mobile/15A372 Safari/604.1");
+		String res  = request.body();
+		System.out.println(res);
+		String title = JsonUtil.getJsonValue(res, "aweme_detail.share_info.share_title");
+		String playAddr = JsonUtil.getJsonValue(res, "aweme_detail.video.play_addr.url_list[0]");
+		String cover = JsonUtil.getJsonValue(res, "aweme_detail.video.origin_cover.url_list[0]");
+		videoModel.setName(title);
+		videoModel.setPlayAddr(playAddr);
+		videoModel.setCover(cover);
+		return videoModel;
+	}
+
 	public static void main(String[] args) {
 		System.out.println(new DouyinParseServiceImpl().parseUrl("http://v.douyin.com/r2w3sN/"));
+		System.out.println(new DouyinParseServiceImpl().parseUrl2("6718940138623241486"));
 	}
 }

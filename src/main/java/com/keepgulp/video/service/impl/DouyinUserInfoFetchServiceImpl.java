@@ -51,11 +51,11 @@ public class DouyinUserInfoFetchServiceImpl implements UserInfoFetchService {
                     System.out.println(content);
                     String aweme_list = JsonUtil.getJsonValue(content,"aweme_list");
                     String has_more = JsonUtil.getJsonValue(content,"has_more");
-                    if("true".equals(has_more)) {
+                    if("true".equals(has_more) || "1".equals(has_more)) {
                         max_cursor = JsonUtil.getJsonValue(content,"max_cursor");
-                        if(StringUtils.isEmpty(max_cursor)) {
-                            max_cursor = "1";
-                        }
+//                        if(StringUtils.isEmpty(max_cursor)) {
+//                            max_cursor = "1";
+//                        }
                     } else {
                         break;
                     }
@@ -105,7 +105,7 @@ public class DouyinUserInfoFetchServiceImpl implements UserInfoFetchService {
 
 
     public static void main(String[] args) throws IOException {
-        String uId = "89923219116";
+        String uId = "76055758243";
         new DouyinUserInfoFetchServiceImpl().fetchUserInfo(uId, AppType.DOUYIN);
     }
 }
