@@ -10,6 +10,8 @@ import java.util.Date;
 public class UserEntity {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "uid", length = 30)
     private String uid;
 
     @Column(name = "douyin_id")
